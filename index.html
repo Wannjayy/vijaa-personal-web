@@ -3,28 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f7c4d8" />
+  <meta name="theme-color" id="theme-color" content="#f7c4d8" />
   <meta name="description" content="Portfolio Viana Julita — jurnalistik, video editing, photo editing, dan fotografi." />
   <title>Viana Julita — Visual Portfolio</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('vijaa-theme');
+      const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = savedTheme || preferredTheme;
+    } catch {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
   <link rel="icon" type="image/svg+xml" href="assets/vijaa-mark.svg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="loader" aria-hidden="true"><span>VIJAA<span style="color: white;">.</span></span><div class="loader-line"><i></i></div><small>LOADING CREATIVE EXPERIENCE</small></div>
+  <div class="loader" aria-hidden="true">
+    <span>VIJAA<span style="color: white;">.</span></span>
+    <div class="loader-line"><i></i></div>
+    <small>LOADING CREATIVE EXPERIENCE</small>
+  </div>
   <div class="page-noise" aria-hidden="true"></div>
+
   <header class="site-header">
     <a class="brand" href="#home" aria-label="VIJAA — kembali ke halaman utama">
       <span class="brand-mark">V</span>
       <span class="brand-name">VIJAA<span class="brand-dot">.</span></span>
     </a>
-    <nav class="main-nav" aria-label="Navigasi utama">
+    <nav class="main-nav" id="primary-navigation" aria-label="Navigasi utama">
       <a href="#about">About</a>
       <a href="#work">Projects</a>
       <a href="#photography">Photography</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="header-cta" href="#contact">LET'S TALK <span>↗</span></a>
-    <button class="menu-toggle" type="button" aria-label="Buka navigasi" aria-expanded="false">
+    <button class="theme-toggle" type="button" aria-label="Aktifkan mode gelap" aria-pressed="false" title="Aktifkan mode gelap">
+      <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    </button>
+    <button class="menu-toggle" type="button" aria-label="Buka navigasi" aria-expanded="false" aria-controls="primary-navigation">
       <span></span><span></span>
     </button>
   </header>
@@ -46,7 +63,7 @@
       <div class="hero-visual reveal">
         <div class="hero-index">01 <span>—</span> 04</div>
         <div class="portrait-frame">
-          <img src="profile.jpg" alt="Foto profil Viana Julita — ganti fileimage.jpg dengan foto pribadi" />
+          <img src="profile.jpg" alt="Foto profil Viana Julita" />
           <div class="portrait-stamp">VJ<br /><small>VISUAL<br />PHOTOGRAPHY</small></div>
         </div>
         <div class="hero-caption"><span>FIG. 01</span><span>VIANA JULITA / INDONESIA</span></div>
@@ -76,7 +93,10 @@
           <p>Berangkat dari bidang Jurnalistik, aku tertarik pada proses menemukan cerita, menyusun pesan, dan menerjemahkannya ke dalam bentuk visual. Aku juga mengerjakan project editing video dan foto, serta mengembangkan pengalaman di bidang fotografi.</p>
           <p>Di sini, kamu bisa melihat beberapa karya dan proses kreatif yang aku kerjakan.</p>
           <div class="about-tags">
-            <span>JURNALISTIK</span><span>VIDEO EDITING</span><span>PHOTO EDITING</span><span>PHOTOGRAPHY</span>
+            <a href="#video">VIDEO EDITING</a>
+            <a href="#photo">PHOTO EDITING</a>
+            <a href="#journalism">JURNALISTIK</a>
+            <a href="#photography">PHOTOGRAPHY</a>
           </div>
           <a href="#work" class="text-link">EXPLORE MY WORK <span>↗</span></a>
         </div>
@@ -88,23 +108,21 @@
         <div class="section-topline"><span>02 / SELECTED WORK</span><span>PROJECTS & CREATIVE PROCESS</span></div>
         <div class="work-heading reveal">
           <h2>FROM IDEA<br />TO <em>VISUAL.</em></h2>
-          <!-- <p>Beberapa bidang yang aku kerjakan.<br />Detail project bisa kamu sesuaikan sendiri.</p> -->
         </div>
         <div class="work-grid">
-          <article class="work-card x-work-card-large reveal">
+          <article class="work-card work-card reveal" id="video">
             <div class="work-image"><img src="assets/project-video.svg" alt="Ilustrasi placeholder project video editing" /><span class="image-number">PROJECT / 01</span></div>
             <div class="work-info"><div><p class="work-type">01 — POST PRODUCTION</p><h3>Video Editing</h3><p class="work-desc">Penyuntingan video, pengaturan alur, tempo, audio, dan penyampaian pesan.</p></div><span class="work-arrow">↗</span></div>
           </article>
-          <article class="work-card reveal">
+          <article class="work-card reveal" id="photo">
             <div class="work-image"><img src="assets/project-photo.svg" alt="Ilustrasi placeholder project photo editing" /><span class="image-number">PROJECT / 02</span></div>
             <div class="work-info"><div><p class="work-type">02 — PHOTO RETOUCHING</p><h3>Photo Editing</h3><p class="work-desc">Pengolahan warna, pencahayaan, komposisi, dan detail foto.</p></div><span class="work-arrow">↗</span></div>
           </article>
-          <article class="work-card reveal">
+          <article class="work-card reveal" id="journalism">
             <div class="work-image"><img src="assets/project-journalism.svg" alt="Ilustrasi placeholder project jurnalistik" /><span class="image-number">PROJECT / 03</span></div>
             <div class="work-info"><div><p class="work-type">03 — STORY DEVELOPMENT</p><h3>Journalism</h3><p class="work-desc">Riset, pengembangan ide, penulisan, dan penyusunan cerita.</p></div><span class="work-arrow">↗</span></div>
           </article>
         </div>
-        <!-- <p class="edit-hint"><span>✳</span> Ganti gambar dan deskripsi project lewat folder assets dan file index.html.</p> -->
       </div>
     </section>
 
@@ -112,13 +130,24 @@
       <div class="section-shell">
         <div class="section-topline"><span>03 / PHOTOGRAPHY</span><span>SELECTED FRAMES</span></div>
         <div class="photo-heading reveal">
-          <div><p class="eyebrow pink-eyebrow">THROUGH MY LENS</p><h2>THE WORLD,<br /><em>IN FRAMES.</em></h2></div>
-          <!-- <div class="photo-heading-side"><p>Potongan momen yang pernah aku abadikan. Tambahkan hasil fotomu sendiri lewat tombol di bawah.</p><label class="upload-button" for="photo-upload">+ ADD PHOTOS</label><input id="photo-upload" type="file" accept="image/*" multiple hidden /></div> -->
+          <div>
+            <p class="eyebrow pink-eyebrow">THROUGH MY LENS</p>
+            <h2>THE WORLD,<br /><em>IN FRAMES.</em></h2>
+          </div>
+          <div class="photo-heading-side">
+            <p>Potongan momen yang pernah aku abadikan. Tambahkan hasil fotomu sendiri lewat tombol di bawah.</p>
+            <label class="upload-button" for="photo-upload">+ ADD PHOTOS</label>
+            <input id="photo-upload" type="file" accept="image/*" multiple hidden />
+          </div>
         </div>
         <div class="gallery" id="gallery" aria-live="polite">
-          <div class="gallery-empty" id="gallery-empty"><span class="empty-cross">＋</span><p>YOUR PHOTOGRAPHY GOES HERE</p><small>Belum ada foto. Klik “ADD PHOTOS” untuk mulai mengisi galeri.</small></div>
+          <div class="gallery-empty" id="gallery-empty">
+            <span class="empty-cross">＋</span>
+            <p>YOUR PHOTOGRAPHY GOES HERE</p>
+            <small>Belum ada foto. Klik “ADD PHOTOS” untuk mulai mengisi galeri.</small>
+          </div>
         </div>
-        <!-- <p class="gallery-note" id="gallery-note">Foto yang ditambahkan tersimpan di browser/perangkat ini. Untuk memindahkan ke perangkat lain, tambahkan ulang fotonya.</p> -->
+        <p class="gallery-note" id="gallery-note">Foto yang ditambahkan tersimpan di browser/perangkat ini. Untuk memindahkan ke perangkat lain, tambahkan ulang fotonya.</p>
       </div>
     </section>
 
